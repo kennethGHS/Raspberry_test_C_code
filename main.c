@@ -7,6 +7,7 @@
 #include <sys/ioctl.h>
 #include <sys/mman.h>
 #include <unistd.h>
+#include "Code/IOManagement.h"
 
 //
 //uint8_t *buffer;
@@ -197,7 +198,10 @@
 
 int main()
 {
-
+    printf("test");
+    int array[] = {23,24,35};
+    set_gpio_list(array,3);
+    execute_monitoring();
 //    char array[20];
 //    int prueba = 1000;
 //    snprintf(array,10,"%d",prueba);

@@ -1,4 +1,6 @@
 CC = gcc
+SOURCE = main.c ./Code/IOManagement.c
+LIB = -lpigpio -lrt
 build:
-	gcc  -Wall -pthread
+	gcc -o testeo $(SOURCE) -Wall -pthread $(LIB)
 

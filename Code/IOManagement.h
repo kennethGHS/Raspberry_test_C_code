@@ -5,9 +5,10 @@
 #ifndef IMAGETEST_IOMANAGEMENT_H
 #define IMAGETEST_IOMANAGEMENT_H
 #include <pigpio.h>
-void * analise_Gpio(void * gpioValue);
+void * analyse_Gpio(void * gpioValue);
 void execute_change(short mode);
 int * gpio_list;
+int list_len;
 short active;
 void set_gpio_list_predefined(int * list);
 void set_gpio_list(int * list, int size);

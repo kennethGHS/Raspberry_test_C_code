@@ -10,7 +10,7 @@
 #include <malloc.h>
 #include <pthread.h>
 
-void *analise_Gpio(void *gpioValue) {
+void *analyse_Gpio(void *gpioValue) {
     int gpio = *(int *) gpioValue;
     gpioSetMode(gpio, PI_INPUT);
     int previous_state = gpioRead(gpio);
@@ -48,6 +48,7 @@ void set_gpio_list_predefined(int *list) {
 
 void set_gpio_list(int *list, int size) {
     gpio_list = malloc(sizeof(int) * size);
+    list_len = size;
     for (int i = 0; i < size; ++i) {
         gpio_list[i] = list[i];
     }
@@ -62,9 +63,11 @@ void clear_list() {
 }
 
 void execute_monitoring() {
-    pthread_t id[20];
+    pthread_t id[list_len];
     gpioInitialise(); // this has to be executed
-    for (int i = 0; i < 20; ++i) {
-        pthread_create(&(id[i]), NULL, analise_Gpio, (void *) &(gpio_list[i]));
+    for (int i = 0; i < list_len; ++i) {
+        pthread_create(&(id[i]), NULL, analyse_Gpio, (void *) &(gpio_list[i]));
     }
+    while (1){}
+
 }
