@@ -63,6 +63,7 @@ void clear_list() {
 }
 
 void execute_monitoring() {
+    active =1;
     pthread_t id[list_len];
     gpioInitialise(); // this has to be executed
     for (int i = 0; i < list_len; ++i) {
@@ -71,5 +72,6 @@ void execute_monitoring() {
     char a_word[20];
     printf ("Press any to finish ");
     scanf ("%s", a_word);
+    active = 0;
 
 }
