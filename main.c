@@ -198,21 +198,22 @@
 //}
 
 int main()
-{pinMode(23,1);
- int result =digitalRead(23);
- int prev_result = result;
- while (1){
-     result = digitalRead(23);
-     if (result!= prev_result) {
-         printf("changed to value %d", result);
-         prev_result = result;
-         sleep(0.1);
-     }
-    }
+{
+// pinMode(23,1);
+// int result =digitalRead(23);
+// int prev_result = result;
+// while (1){
+//     result = digitalRead(23);
+//     if (result!= prev_result) {
+//         printf("changed to value %d", result);
+//         prev_result = result;
+//         sleep(0.1);
+//     }
+//    }
 //    printf("test");
-//    int array[] = {23,24,35};
-//    set_gpio_list(array,3);
-//    execute_monitoring();
+    int array[] = {23,24,35};
+    set_gpio_list(array,3);
+    execute_monitoring();
 //    char array[20];
 //    int prueba = 1000;
 //    snprintf(array,10,"%d",prueba);
