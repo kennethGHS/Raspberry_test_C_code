@@ -3,7 +3,7 @@
 #include "ManualGPIO.h"
 
 int main(int argc, char const *argv[]) {
-	print("Testing GPIO 3...")
+	printf("Testing GPIO 3...");
 	pinMode(3, 0);
 	digitalWrite(3, 1);
 	sleep(1);
