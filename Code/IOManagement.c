@@ -66,7 +66,9 @@ void clear_list() {
 void execute_monitoring() {
     active =1;
     pthread_t id[list_len];
-    gpioInitialise(); // this has to be executed
+    if (gpioInitialise()<0){
+        printf("Error");
+    } // this has to be executed
     for (int i = 0; i < list_len; ++i) {
         pthread_create(&(id[i]), NULL, analyse_Gpio, (void *) &(gpio_list[i]));
     }
