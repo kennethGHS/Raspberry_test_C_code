@@ -68,6 +68,8 @@ void execute_monitoring() {
     for (int i = 0; i < list_len; ++i) {
         pthread_create(&(id[i]), NULL, analyse_Gpio, (void *) &(gpio_list[i]));
     }
-    while (1){}
+    char a_word[20];
+    printf ("Press any to finish ");
+    scanf ("%s", a_word);
 
 }
