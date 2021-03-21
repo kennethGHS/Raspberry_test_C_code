@@ -21,9 +21,12 @@ void *analyse_Gpio(void *gpioValue) {
             if (actual_state == PI_HIGH) {
                 printf("Change to value %d in pin %d",1,gpio);
                 execute_change(1);
+                sleep(0.3);
             } else if (actual_state == PI_LOW) {
                 printf("Change to value %d in pin %d",0,gpio);
                 execute_change(0);
+                sleep(0.3);
+
             }
             previous_state = actual_state;
         }
