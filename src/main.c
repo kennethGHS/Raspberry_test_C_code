@@ -7,6 +7,7 @@ int main(int argc, char const *argv[]) {
 		printf("Usage: %s <pin number>\n");
 		return 1;
 	}
+
 	int pin = atoi(argv[1]);
 	printf("Testing GPIO %d...\n", pin);
 	pinMode(pin, 0);
@@ -14,6 +15,6 @@ int main(int argc, char const *argv[]) {
 	sleep(1);
 	digitalWrite(pin, 0);
 	sleep(1);
-	blink(pin, 0.5, 10);
+	blink(pin, 0.25, 10);
 	return 0;
 }
