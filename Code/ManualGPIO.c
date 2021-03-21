@@ -77,7 +77,7 @@ void digitalWrite(int pin, short value) {
 
 }
 
-int digitalRead(short pin) {
+int digitalRead(int pin) {
     char pin_string[100];
     char result[1];
     int fd;
