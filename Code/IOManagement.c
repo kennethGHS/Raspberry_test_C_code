@@ -11,6 +11,7 @@
 #include <pthread.h>
 
 void *analyse_Gpio(void *gpioValue) {
+    gpioInitialise();
     int gpio = *(int *) gpioValue;
     gpioSetMode(gpio, PI_INPUT);
     int previous_state = gpioRead(gpio);
