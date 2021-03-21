@@ -17,11 +17,13 @@ void pinMode(int pin, short mode) {
     snprintf(pin_string, 10, "%d", pin);
     int fd = open("/sys/class/gpio/export", O_WRONLY);
     if (fd == -1) {
+        close(fd);
         perror("Unable to open /sys/class/gpio/export");
         exit(1);
     }
 
     if (write(fd, pin_string, strlen(pin_string)) != strlen(pin_string)) {
+        close(fd);
         perror("Error writing to /sys/class/gpio/export");
         exit(1);
     }
@@ -32,21 +34,24 @@ void pinMode(int pin, short mode) {
     fd = open(pin_string, O_WRONLY);
     if (fd == -1) {
         perror("Unable to write in the pin");
+        close(fd);
         exit(1);
     }
     if (mode == 1) {
         if (write(fd, "in", 2) != 2) {
+            close(fd);
             perror("Error while writing in the pin");
             exit(1);
         }
     } else if (mode == 0) {
         if (write(fd, "out", 3) != 3) {
+            close(fd);
             perror("Error while writing in the pin");
             exit(1);
         }
     } else {
         perror("Unable to identify mode, only accepted modes are 1 or 0");
-
+        close(fd);
         exit(1);
     }
     close(fd);
@@ -59,16 +64,19 @@ void digitalWrite(int pin, short value) {
 
     fd = open(pin_string, O_WRONLY);
     if (fd == -1) {
+        close(fd);
         perror("Error while opening the pin value file, try enabling it first");
         exit(1);
     }
     if (value == 0) {
         if (write(fd, "0", 1) != 1) {
+            close(fd);
             perror("Error while writing the pin value");
             exit(1);
         }
     } else if (value == 1) {
         if (write(fd, "1", 1) != 1) {
+            close(fd);
             perror("Error while writing the pin value");
             exit(1);
         }
@@ -79,21 +87,23 @@ void digitalWrite(int pin, short value) {
 
 int digitalRead(int pin) {
     char pin_string[100];
-    char result[1];
+    char result[3];
     int fd;
     snprintf(pin_string, 100, "/sys/class/gpio/gpio%d/value", pin);
 
-    fd = open(pin_string, O_WRONLY);
+    fd = open(pin_string, O_RDONLY);
     if (fd == -1) {
+        close(fd);
         perror("Error while opening the pin value file, try enabling it first");
         exit(1);
     }
-    if (read(fd, result, 1) != 1) {
+    if (read(fd, result, 3) <0) {
+        close(fd);
         perror("Error while reading the pin value");
         exit(1);
     }
     close(fd);
-    return result[0] - '0';
+    return atoi(result);
 }
 
 void blink(short pin, double frequency, double duration) {
@@ -103,6 +113,7 @@ void blink(short pin, double frequency, double duration) {
 
     stop = 0;
     if (frequency == 0) {
+
         perror("Frequency cant be 0");
         exit(1);
     }
