@@ -42,7 +42,8 @@ int main()
     printf ("Press any to finish ");
     scanf ("%s", a_word);
     printf("Finished");
-    variable = 0;
+    variable = -1;
+    sleep(2);
 //    printf("test");
 //    int array[] = {23,24,35};
 //    set_gpio_list(array,3);
