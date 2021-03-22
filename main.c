@@ -41,7 +41,7 @@ int main()
     char a_word[50];
     printf ("Press any to finish ");
     scanf ("%s", a_word);
-    printf("Finished")
+    printf("Finished");
     variable = 0;
 //    printf("test");
 //    int array[] = {23,24,35};
