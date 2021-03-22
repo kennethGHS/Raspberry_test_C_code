@@ -107,24 +107,22 @@ int digitalRead(int pin) {
 }
 
 void blink(short pin, double frequency, double duration) {
+    double time = 0;
+    double period = 1;
 
-    double period;
-    double downtime;
-
-    stop = 0;
     if (frequency == 0) {
 
         perror("Frequency cant be 0");
         exit(1);
     }
     period = 1 / frequency;
-    downtime = period - duration;
 
-    while (!stop) {
-        digitalWrite(pin,1);
-        sleep(duration);
-        digitalWrite(pin,0);
-        sleep(downtime);
+    while (time < duration) {
+        digitalWrite(pin, 1);
+        sleep(period / 2);
+        digitalWrite(pin, 0);
+        sleep(period / 2);
+        time += period;
     }
 
 }
@@ -152,3 +150,4 @@ int gpio_unexport(int pin)
     close(fd);
     return 0;
 }
+
