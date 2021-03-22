@@ -21,12 +21,12 @@ void * execute_analysis(){
         result = digitalRead(23);
         result2 = digitalRead(24);
         if (result!= prev_result) {
-            printf("changed to value %d in pin %d", result,23);
+            printf("changed to value %d in pin %d \n", result,23);
             prev_result = result;
             sleep(1);
         }
         if (result2!= prev_result2) {
-            printf("changed to value %d in pin %d", result,24);
+            printf("changed to value %d in pin %d \n", result,24);
             prev_result2 = result2;
             sleep(1);
         }
