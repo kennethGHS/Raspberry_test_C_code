@@ -16,7 +16,7 @@ void * execute_analysis(){
     int result =digitalRead(23);
     int result2 = digitalRead(24);
     int prev_result2= result2;
-    int pre_result = result;
+    int prev_result = result;
     while (variable){
         result = digitalRead(23);
         if (result!= prev_result) {
@@ -37,7 +37,7 @@ int main()
 {
     pthread_t id[1];
     pthread_create(&(id[0]), NULL, execute_analysis,NULL);
-
+    char a_word[50];
     printf ("Press any to finish ");
     scanf ("%s", a_word);
     variable = 0;
