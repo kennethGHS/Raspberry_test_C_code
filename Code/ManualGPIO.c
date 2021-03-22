@@ -128,3 +128,27 @@ void blink(short pin, double frequency, double duration) {
     }
 
 }
+
+static int gpio_unexport(int pin)
+{
+    char buffer[64];
+    int len;
+    int fd;
+
+    fd = open("/sys/class/gpio/unexport", O_WRONLY);
+    if (fd < 0) {
+        MSG("Failed to open unexport for writing!\n");
+
+        return -1;
+    }
+
+    len = snprintf(buffer, sizeof(buffer), "%d", pin);
+
+    if (write(fd, buffer, len) < 0) {
+        MSG("Failed to unexport gpio!");
+        return -1;
+    }
+
+    close(fd);
+    return 0;
+}
