@@ -19,15 +19,16 @@ void * execute_analysis(){
     int prev_result = result;
     while (variable){
         result = digitalRead(23);
+        result2 = digitalRead(24);
         if (result!= prev_result) {
             printf("changed to value %d in pin %d", result,23);
             prev_result = result;
-            sleep(0.5);
+            sleep(1);
         }
         if (result2!= prev_result2) {
             printf("changed to value %d in pin %d", result,24);
             prev_result2 = result2;
-            sleep(0.5);
+            sleep(1);
         }
     }
     gpio_unexport(23);
