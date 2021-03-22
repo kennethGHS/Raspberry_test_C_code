@@ -9,4 +9,5 @@ void pinMode(int pin, short mode);
 void digitalWrite(int pin,short value);
 int digitalRead(int pin);
 void blink(short pin, double frequency,double duration);
+int gpio_unexport(int pin);
 #endif //IMAGETEST_MANUALGPIO_H
