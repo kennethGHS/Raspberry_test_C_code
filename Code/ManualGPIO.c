@@ -148,7 +148,7 @@ int gpio_unexport(int pin)
         perror("Failed to unexport gpio!");
         return -1;
     }
-    printf("Unexported pin %d \n",pin)
+    printf("Unexported pin %d \n",pin);
     close(fd);
     return 0;
 }
