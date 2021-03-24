@@ -50,6 +50,6 @@ void destroy_monitoring() {
 
 void execute_on_change(int gpio, int value) {
     sem_wait(action_semaphore);
-    printf("The pin %d changed to value %d", gpio, value);
+    printf("The pin %d changed to value %d\n", gpio, value);
     sem_post(action_semaphore);
 }
