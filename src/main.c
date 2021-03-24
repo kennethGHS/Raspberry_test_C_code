@@ -1,6 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
-#include "ManualGPIO.h"
+#include "../include/ManualGPIO.h"
 #include "../include/Monitoring.h"
 int test_GPIO_input(){
     int array_gpio[] = {23,24};
