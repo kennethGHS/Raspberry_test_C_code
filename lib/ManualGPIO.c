@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <string.h>
 #include <unistd.h>
-#include "../include/ManualGPIO.h"
+#include "ManualGPIO.h"
 
 void pinMode(int pin, short mode) {
     char pin_string[100];
