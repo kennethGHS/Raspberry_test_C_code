@@ -42,6 +42,7 @@ void initialize_values(int *list, int list_len) {
 }
 
 void destroy_monitoring() {
+    thread_executing = -1;
     for (int i = 0; i < gpio_list_len; ++i) {
         gpio_unexport(gpio_list[i]);
     }
