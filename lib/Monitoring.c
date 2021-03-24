@@ -2,7 +2,7 @@
 // Created by kenneth on 21/3/21.
 //
 #include <zconf.h>
-#include "Monitoring.h"
+#include "../lib/Monitoring.h"
 
 void *execute_monitoring(void *gpio) {
     int pin = *(int *) gpio;
