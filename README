@@ -1,0 +1,18 @@
+Taller 7
+Jasson Rodriguez Mendez 2017238970
+Marco Herrera Valverde 2017111230
+Kenneth Hernandez Salazar 2017102682
+
+¿Que pasos debe seguir antes de escribir o leer de un puerto de entrada/salida
+general(GPIO)?
+
+Primero es necesario exportar el puerto a utilizar escribiendo en el archivo
+/sys/class/gpio/export el numero del puerto y luego establecer la direccion
+del puerto en el archivo /sys/class/gpio/gpio<numero del puerto>/direction como
+in/out
+
+¿Que comando podria utilizar, bajo Linux, para escribir a un GPIO especifico?
+
+Una vez realizado lo anterior se podria escribir al puerto simplemente
+utilizando el comando echo para escribir al archivo del puerto deseado. Por
+ejemplo: echo "1" > /sys/class/gpio/gpio3/value
