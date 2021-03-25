@@ -16,3 +16,29 @@ in/out
 Una vez realizado lo anterior se podria escribir al puerto simplemente
 utilizando el comando echo para escribir al archivo del puerto deseado. Por
 ejemplo: echo "1" > /sys/class/gpio/gpio3/value
+
+Instrucciones para la compilacion
+
+--Compilacion en la maquina de destino
+
+mkdir build && cd build
+../configure
+make
+make install
+
+--Compilacion cruzada ARM
+
+Una vez que se tiene el toolchain configurado correctamente:
+
+mkdir build && cd build
+../configure --build=x86_64-linux-gnu --host=arm-linux-gnuabi --prefix=<carpeta temporal de instalacion>
+make
+make install
+
+Puede copiar los contenidos de la carpeta de instalacion directamente en el
+directorio raiz de la maquina de destino para instalarlo permanentemente. Sino
+puede utilizar el siguiente comando para cargar la biblioteca requerida:
+
+export LD_LIBRARY_PATH=<carpeta de instalacion>/lib
+
+Uso: gpio <output 1 pin number> <output 1 value> <output 2 pin number> <input pin number>
