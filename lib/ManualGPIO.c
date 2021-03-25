@@ -150,4 +150,3 @@ int gpio_unexport(int pin)
     close(fd);
     return 0;
 }
-

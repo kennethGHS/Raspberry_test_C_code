@@ -3,7 +3,7 @@
 /autom4te.cache
 /.idea
 /build
-
+/build-aux
 
 # Created by https://www.toptal.com/developers/gitignore/api/autotools
 # Edit at https://www.toptal.com/developers/gitignore?templates=autotools
